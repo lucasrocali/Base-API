@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20170829194407) do
     t.string "email"
     t.string "password_digest"
     t.integer "login_type"
+    t.string "img_url"
+    t.string "social_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,8 @@
 ActiveAdmin.register User do
 
-permit_params :email, :password_digest, :login_type
+permit_params :name, :email, :login_type
+
+filter :created_at
 
 
 end

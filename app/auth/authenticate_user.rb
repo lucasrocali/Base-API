@@ -23,7 +23,7 @@ class AuthenticateUser
     # puts 'PASS'
     # puts user.to_json
     if user 
-      if user.authenticate(@password)
+      if user.social_login || user.authenticate(@password)
         
         user.auth_token = JsonWebToken.encode(user_id: user.id)
         return user 
