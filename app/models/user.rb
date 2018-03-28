@@ -2,7 +2,7 @@ class User < ApplicationRecord
   
   enum login_type: [:Manual, :Facebook, :Google]
 
-  attr_accessor :auth_token
+  attr_accessor :auth_token, :old_password
   has_secure_password
 
   validates_presence_of :email, :password_digest

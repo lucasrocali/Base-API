@@ -35,6 +35,10 @@ class Message
     'Invalid Password'
   end
 
+  def self.login_invalid_info
+    'Invalid Info'
+  end
+
   def self.login_user_not_found
     'User not found'
   end

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   post 'auth/login', to: 'v1/authentication#authenticate'
   post 'signup', to: 'v1/users#signup'
+  post 'change_password', to: 'v1/users#change_password'
+  post 'change_info', to: 'v1/users#change_info'
 end

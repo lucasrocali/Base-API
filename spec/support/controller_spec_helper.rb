@@ -12,15 +12,15 @@ module ControllerSpecHelper
   # return auth valid headers
   def auth_valid_headers(admin_user)
     {
-      "Accept" => "application/kids-places.v1+json",
+      "Accept" => "application/base-api.v1+json",
       "Content-Type" => "application/json",
       "ApiToken" => admin_user.api_token
     }
   end
   # return valid headers
-  def valid_headers
+  def valid_headers(user)
     {
-      "Accept" => "application/kids-places.v1+json",
+      "Accept" => "application/base-api.v1+json",
       "Authorization" => token_generator(user.id),
       "Content-Type" => "application/json"
     }

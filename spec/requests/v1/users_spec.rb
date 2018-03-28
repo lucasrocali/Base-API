@@ -44,6 +44,102 @@ RSpec.describe 'Users API', type: :request do
 
   end
 
+  let(:user_new_pass) { create(:user) }
+  let(:new_pass) { 'NEW_PASSSWORD' }
+  let(:valid_change_password_attributes) do
+    { old_password: user_new_pass.password , password: new_pass, password_confirmation: new_pass }
+  end
+  let(:invalid_change_password_attributes_old) do
+    { old_password: 'invalid_old_password' , password: new_pass, password_confirmation: new_pass }
+  end
+  let(:invalid_change_password_attributes_confirmation) do
+    { old_password: user_new_pass.password , password: new_pass, password_confirmation: 'invalid_passoword_confirmation' }
+  end
+  let(:auth_headers) { valid_headers(user_new_pass) }
+
+  # User change_password test suite
+  describe 'POST /change_password' do
+    context 'when valid request' do
+      before { post '/change_password', params: valid_change_password_attributes.to_json, headers: auth_headers }
+
+      it 'returns valid status code' do
+        expect(response).to have_http_status(200)
+      end
+
+
+      it 'returns an authentication token' do
+        expect(json['auth_token']).not_to be_nil
+      end
+    end
+
+    context 'when old password is invalid' do
+      before { post '/change_password', params: invalid_change_password_attributes_old.to_json, headers: auth_headers }
+
+      it 'does not change the password' do
+        expect(response).to have_http_status(401)
+      end
+
+      it 'returns failure message' do
+        expect(json['message'])
+          .to match(/Invalid Password/)
+      end
+    end
+
+    context 'when new password confirmation is invalid' do
+      before { post '/change_password', params: invalid_change_password_attributes_confirmation.to_json, headers: auth_headers }
+
+      it 'does not change the password' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns failure message' do
+        expect(json['message'])
+          .to match(/Validation failed: Password confirmation doesn't match Password/)
+      end
+    end
+
+  end
+
+  let(:user_new_info) { create(:user) }
+  let(:new_name) { 'NEW_NAME' }
+  let(:valid_change_info_attributes) do
+    { name: new_name }
+  end
+  let(:auth_headers) { valid_headers(user_new_pass) }
+
+
+    # User change_password test suite
+  describe 'POST /change_info' do
+    context 'when valid request' do
+      before { post '/change_info', params: valid_change_info_attributes.to_json, headers: auth_headers }
+
+      it 'returns valid status code' do
+        expect(response).to have_http_status(200)
+      end
+
+
+      it 'returns an authentication token' do
+        expect(json['auth_token']).not_to be_nil
+      end
+    end
+
+    context 'when new name is invalid' do
+      before { post '/change_info', params: {}, headers: auth_headers }
+
+      it 'does not change the name' do
+        expect(response).to have_http_status(401)
+      end
+
+      it 'returns failure message' do
+        expect(json['message'])
+          .to match(/Invalid Info/)
+      end
+    end
+
+
+  end
+
+
   let(:admin_user) { create(:admin_user) }
   let(:existing_user) { create(:user) }
   let(:existing_user_attributes) do
