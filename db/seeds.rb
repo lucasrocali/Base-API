@@ -8,9 +8,9 @@
 # if Rails.env.development?
 
 	#Acaopamento
-	AdminUser.create!(id:1, email: 'admin@example.com', password: 'password', password_confirmation: 'password') 
+	AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') 
 
-	User.create!(id:1, email: 'rocali@outlook.com',password: 'password')
+	User.create!(email: 'rocali@outlook.com',password: 'password')
 
-	
+	Work.create!(name:'Engenheiro')
 # end

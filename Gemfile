@@ -13,6 +13,7 @@ gem 'rails', '~> 5.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'activeadmin'
+gem 'active_skin'
 gem 'devise'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
