@@ -1,11 +1,12 @@
 # Base-API
 
 Boilerplate for creating APIs, 
-- Basic methos login, signup, change_password and change_info
+- Basic methods: login, signup, change_password and change_info
 - JWT authentication
 - API versioning
 - Uuid for objects
 - Rspec testing
+- Active admin (http://localhost:3000/admin)
 
 ## Getting started
 
@@ -24,6 +25,8 @@ GET POST `http://localhost:3000/works`
 
 `rails g model Post user:references content: string`
 
+See example on `app/models/user`
+
 ## Creating a endpoint
 `rails g controller v1/Posts`
 then on `config/routes` 
@@ -38,7 +41,7 @@ end
 
 ### Endpoints
 
-Sending on body to `/signup`
+Sending on POST `/signup`
 ```
 { 
 	"name":"lucas", 
@@ -49,11 +52,11 @@ Sending on body to `/signup`
 	
 }
 ```
-or on `/login`
+or on POST `/login`
 ```
 { 
-  "email": "rocali@outlook.com", 
-	"password" : "12345678"
+    "email": "rocali@outlook.com", 
+    "password" : "12345678"
 }
 ```
 
@@ -152,5 +155,5 @@ See the example on `app/admin/user.rb`
 
 ### DB
 
-`rake db:drop db:create db:migrate db:seed `
-`rake db:drop db:create db:migrate db:seed RAILS_ENV=test`
+- `rake db:drop db:create db:migrate db:seed `
+- `rake db:drop db:create db:migrate db:seed RAILS_ENV=test`
