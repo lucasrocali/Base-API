@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # end
   
   scope module: :v1, constraints: ApiVersion.new('v1', true) do
-    resources :works
+    # resources :posts
   end
 
   post 'auth/login', to: 'v1/authentication#authenticate'

@@ -12,5 +12,4 @@
 
 	User.create!(email: 'rocali@outlook.com',password: 'password')
 
-	Work.create!(name:'Engenheiro')
 # end
