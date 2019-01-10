@@ -19,7 +19,6 @@ Boilerplate for creating APIs,
 
 POST `http://localhost:3000/login`
 POST `http://localhost:3000/signup`
-GET POST `http://localhost:3000/works`
 
 # Create a model
 
